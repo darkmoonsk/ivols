@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# I.VO.L.S 
 
-## Getting Started
+![image](https://github.com/darkmoonsk/ivols/assets/101902194/73a41ff0-87a9-41fd-a70f-7f60ad073d76)
 
-First, run the development server:
+Este projeto se trata de uma demonstração publica do I.VO.L.S (Intelligent Vocabulary Learning System) que está sendo desenvolvido para a plataforma da [Quantic Learn](https://quanticlearn.com/). 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Link da Demo: https://ivols.quanticlearn.com/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Visão geral do projeto
+Este projeto é um sistema de aprendizado de vocabulário em inglês que oferece recursos de aprendizado personalizados para ajudar os usuários a melhorar suas habilidades de inglês. O sistema é desenvolvido usando React, Next.js, Tailwind CSS e TypeScript.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Recursos do projeto
+- Explicação das palavras: O sistema fornece explicação detalhada de cada palavra, incluindo significado, pronúncia, exemplos de uso e frases comuns.
+- Exemplos de áudio: Para ajudar os usuários a ouvir as palavras em contexto, o sistema fornece exemplos de áudio para cada palavra.
+- Repetição espaçada: O sistema inclui um algoritmo de repetição espaçada(Não incluido nesta demonstração) cujo o objetivo é fixar as palavras na mente do estudante, e incentivar a revisão de palavras que estão prestes a ser esquecidas.
