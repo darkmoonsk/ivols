@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { IconVolume } from "@tabler/icons-react";
 
 interface AudioPlayButtonProps {
@@ -6,10 +9,20 @@ interface AudioPlayButtonProps {
 
 function AudioPlayButton({ path }: AudioPlayButtonProps) {
   const cloud_url = process.env.NEXT_PUBLIC_AUDIO_CLOUD_URL ?? '';
+  const [isPlaying, setIsPlaying] = useState(false);
   
   const handlePlayAudio = () => {
+    if (isPlaying) {
+      return;
+    }
     const url = cloud_url + path;
-    new Audio(url).play();
+    const audio = new Audio(url);
+
+    if (audio) {
+      audio.play();
+      setIsPlaying(true);
+      audio.onended = () => setIsPlaying(false);
+    }
   }
 
   return (

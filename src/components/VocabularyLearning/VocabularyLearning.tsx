@@ -18,29 +18,31 @@ function VocabularyLearning() {
   const [author, setAuthor] = useState("");
   const [unsplashUrl, setUnsplashUrl] = useState("");
 
-  const getImage = async (word: string) => {
+  const getImage = async (phrase: string) => {
     const image = await axios.get(
-      `https://api.unsplash.com/search/photos?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_API_KEY}&query={${word}&orientation=landscape`
+      `https://api.unsplash.com/search/photos?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_API_KEY}&query={${phrase}&orientation=landscape`
     );
     setImageUrl(image.data.results[0].urls.regular);
     setAuthor(image.data.results[0].user.name);
     setUnsplashUrl(image.data.results[0].links.html);
   };
 
+  const randomExamplePhrase = Math.floor(Math.random() * 3);
+
   const randomWord = () => {
     setImageUrl("");
     const word: Word = words[Math.floor(Math.random() * words.length)];
-    getImage(word.word);
+    getImage(word.examplePhrases[randomExamplePhrase]);
     return word;
   };
+
+  const audioQueue = new AudioQueue();
 
   const handlePlayAudio = () => {
     const cloud_url = process.env.NEXT_PUBLIC_AUDIO_CLOUD_URL ?? '';
 
     const URL_WORD = cloud_url + `audio/${word?.word}/${word?.word}.mp3`;
     const URL_EXPLAINING = cloud_url + `audio/${word?.word}/explaining.mp3`;
-
-    const audioQueue = new AudioQueue();
 
     audioQueue.add(URL_WORD);
     audioQueue.add(URL_EXPLAINING);
@@ -56,6 +58,10 @@ function VocabularyLearning() {
     if (word) {
       handlePlayAudio();
     }
+
+    return () => {
+      audioQueue.clear();
+    }
   }, [word]);
 
   return ( 
@@ -67,7 +73,7 @@ function VocabularyLearning() {
             <WordExplainingPanel
               word={word?.word || ""}
               explaining={word?.explaining || ""}
-              examplePhrases={word?.examplePhrases || [""]}
+              examplePhrase={word?.examplePhrases[randomExamplePhrase] || ""}
             />
             <div className="
               lg:max-w-[50%] w-full py-8 px-10 flex flex-col items-center justify-center 

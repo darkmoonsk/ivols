@@ -4,12 +4,10 @@ import HelpInfo from "../HelpInfo";
 interface WordExplainingPanelProps {
   word: string;
   explaining: string;
-  examplePhrases: string[];
+  examplePhrase: string;
 }
 
-function WordExplainingPanel({ word, explaining, examplePhrases }: WordExplainingPanelProps) {
-  const randomExamplePhrase = Math.floor(Math.random() * 3);
-
+function WordExplainingPanel({ word, explaining, examplePhrase }: WordExplainingPanelProps) {
   return (
     <div className="relative lg:max-w-[50%] w-full min-h-[500px] flex flex-col gap-10 px-10 py-8">
       <div className="absolute top-5 right-5">
@@ -32,7 +30,7 @@ function WordExplainingPanel({ word, explaining, examplePhrases }: WordExplainin
         <p>{explaining}</p>
       </div>
       <div className="w-full bg-violet-400 shadow-md text-white p-5 rounded-xl">
-        <p className="font-bold">Example: {examplePhrases[randomExamplePhrase]}</p>
+        <p className="font-bold">Example: {examplePhrase}</p>
       </div>
     </div>
   );
