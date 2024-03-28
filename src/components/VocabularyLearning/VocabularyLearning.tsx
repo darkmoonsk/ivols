@@ -9,6 +9,7 @@ import HeaderVocabulary from "./HeaderVocabulary";
 import WordExplainingPanel from "./WordExplainingPanel";
 import ImageVocabulary from "./ImageVocabulary";
 import HelpInfo from "../HelpInfo";
+import AudioQueue from "@/core/cases/AudioQueue";
 
 function VocabularyLearning() {
   const words = wordList as Word[];
@@ -33,9 +34,29 @@ function VocabularyLearning() {
     return word;
   };
 
+  const handlePlayAudio = () => {
+    const cloud_url = process.env.NEXT_PUBLIC_AUDIO_CLOUD_URL ?? '';
+
+    const URL_WORD = cloud_url + `audio/${word?.word}/${word?.word}.mp3`;
+    const URL_EXPLAINING = cloud_url + `audio/${word?.word}/explaining.mp3`;
+
+    const audioQueue = new AudioQueue();
+
+    audioQueue.add(URL_WORD);
+    audioQueue.add(URL_EXPLAINING);
+    audioQueue.play(1000);
+  }
+
   useEffect(() => {
     setWord(randomWord());
   }, []);
+
+
+  useEffect(() => {
+    if (word) {
+      handlePlayAudio();
+    }
+  }, [word]);
 
   return ( 
     <div className="flex flex-col max-w-[1200px]">
